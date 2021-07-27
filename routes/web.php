@@ -25,6 +25,14 @@ $router->group(['prefix' => 'auth'], function () use ($router) {
     $router->post('login', 'AuthController@login');
 
  });
+ $router->group(['middleware' => 'api', 'prefix' => 'api'], function () use ($router) {
+    $router->get('/category', 'CategoryController@index');
+    $router->get('/category/{id}', 'CategoryController@show');
+    $router->put('/category/{id}', 'CategoryController@update');
+    $router->delete('/category/{id}', 'CategoryController@destroy');
+    $router->post('/category', 'CategoryController@store');
+
+});
 
 // Route::group([
 //     'prefix' => 'auth'
